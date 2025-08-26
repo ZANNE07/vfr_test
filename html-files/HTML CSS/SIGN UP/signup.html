@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .gender, .terms {
+      margin: 10px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
+    }
+    #thankyou {
+      display: none;
+      text-align: center;
+      color: green;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Signup Form</h2>
+  <form id="signupForm">
+    <input type="text" name="fullname" placeholder="Full Name" 
+      pattern="[A-Za-z ]+" required title="Only alphabets and spaces allowed">
+    
+    <input type="email" name="email" placeholder="Email" required>
+    
+    <input type="password" name="password" placeholder="Password" 
+      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}" 
+      title="Must be at least 8 characters with uppercase, lowercase, digit, and special character" required>
+    
+    <input type="password" name="confirmpassword" placeholder="Confirm Password" required>
+    
+    <input type="tel" name="phone" placeholder="Phone (Optional)" 
+      pattern="[0-9]{10}" title="Enter a valid 10-digit number">
+    
+    <input type="date" name="dob" required>
+
+    <div class="gender">
+      <label><input type="radio" name="gender" value="Male" required> Male</label>
+      <label><input type="radio" name="gender" value="Female" required> Female</label>
+    </div>
+    
+    <div class="terms">
+      <label><input type="checkbox" name="terms" required> I agree to Terms & Conditions</label>
+    </div>
+
+    <button type="submit" id="submitBtn">Submit</button>
+  </form>
+  
+  <div id="thankyou">Thank you for registering! 🎉</div>
+</div>
+
+<script>
+  const form = document.getElementById('signupForm');
+  const thankYouMsg = document.getElementById('thankyou');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent page refresh
+    
+    // Password match validation
+    const password = form.password.value;
+    const confirmPassword = form.confirmpassword.value;
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Date of Birth validation: Must be 18+
+    const dob = new Date(form.dob.value);
+    const today = new Date();
+    const age = today.getFullYear() - dob.getFullYear();
+    if (age < 18 || (age === 18 && today < new Date(dob.setFullYear(dob.getFullYear() + 18)))) {
+      alert("You must be at least 18 years old!");
+      return;
+    }
+
+    // Show thank you message
+    thankYouMsg.style.display = "block";
+    form.reset(); // Reset the form after successful submission
+  });
+</script>
+
+</body>
+</html>

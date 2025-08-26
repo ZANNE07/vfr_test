@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student List Renderer</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background: #f7f7f7;
+      margin: 0;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 15px 0;
+      width: 200px;
+    }
+
+    li {
+      background: #fff;
+      margin: 5px 0;
+      padding: 10px;
+      text-align: center;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background 0.3s;
+    }
+
+    li:hover {
+      background: #e6f0ff;
+    }
+
+    button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 6px;
+      background: #007BFF;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Student List</h2>
+  <ul id="studentList"></ul>
+  <button onclick="addStudent()">Add Student</button>
+
+  <script>
+    // Initial Array of Students
+    let students = ["John", "Emma", "Sophia", "Liam", "Noah"];
+
+    // Function to Render Student List using map()
+    function renderList() {
+      const studentList = document.getElementById("studentList");
+      studentList.innerHTML = students.map(student => `<li>${student}</li>`).join("");
+    }
+
+    // Function to Add a New Student
+    function addStudent() {
+      const newName = prompt("Enter new student name:");
+      if (newName && newName.trim() !== "") {
+        students.push(newName.trim());
+        renderList(); // Re-render the updated list
+      }
+    }
+
+    // Initial Render
+    renderList();
+  </script>
+
+</body>
+</html>

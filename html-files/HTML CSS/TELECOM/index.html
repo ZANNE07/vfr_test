@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Telecom Portal — Login</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <!-- Nav -->
+  <header class="nav">
+    <div class="container">
+      <div class="brand">Verital Telecom</div>
+      <nav>
+        <a href="index.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="plans.html">Plans</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <h1>Welcome back 👋</h1>
+      <p>Sign in to manage your prepaid/postpaid connection, recharge, and view usage.</p>
+    </section>
+
+    <section class="card" style="max-width:520px;margin:auto;">
+      <form action="plans.html" method="get">
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div>
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" placeholder="••••••••" required minlength="6" />
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <label style="display:flex;gap:8px;align-items:center;font-weight:500;">
+            <input type="checkbox" name="remember" /> Remember me
+          </label>
+          <a href="register.html" class="btn" style="background:#64748b;">Create account</a>
+        </div>
+
+        <button class="btn" type="submit">Login</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">© 2025 Verital Telecom</footer>
+</body>
+</html>

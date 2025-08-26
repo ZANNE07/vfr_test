@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MNP Request Form</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f2f4f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Card Style Layout */
+    .form-container {
+      background: #fff;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .form-container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Form elements styling */
+    form label {
+      font-weight: bold;
+      margin-bottom: 6px;
+      display: block;
+      text-align: left;
+      color: #444;
+    }
+
+    form input, 
+    form select, 
+    form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    form textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    /* Submit button styling */
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background: #45a049;
+    }
+
+    /* Thank You Message */
+    .thank-you {
+      display: none;
+      margin-top: 15px;
+      color: #4CAF50;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 500px) {
+      .form-container {
+        padding: 20px;
+      }
+
+      .form-container h2 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>MNP Request Form</h2>
+    <form id="mnpForm">
+      <label for="fullname">Full Name</label>
+      <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required pattern="[0-9]{10}">
+
+      <label for="current-operator">Current Operator</label>
+      <select id="current-operator" name="current-operator" required>
+        <option value="">Select Current Operator</option>
+        <option value="Airtel">Airtel</option>
+        <option value="Jio">Jio</option>
+        <option value="Vodafone">Vodafone</option>
+        <option value="BSNL">BSNL</option>
+      </select>
+
+      <label for="new-operator">New Operator</label>
+      <select id="new-operator" name="new-operator" required>
+        <option value="">Select New Operator</option>
+        <option value="Airtel">Airtel</option>
+        <option value="Jio">Jio</option>
+        <option value="Vodafone">Vodafone</option>
+        <option value="BSNL">BSNL</option>
+      </select>
+
+      <label for="reason">Reason for Porting</label>
+      <textarea id="reason" name="reason" placeholder="Enter reason for porting..." required></textarea>
+
+      <button type="submit" class="submit-btn">Submit Request</button>
+    </form>
+
+    <!-- Hidden Thank You Message -->
+    <p class="thank-you" id="thankYouMsg">Thank you! Your request has been submitted.</p>
+  </div>
+
+  <script>
+    // Handle form submission
+    document.getElementById("mnpForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // prevent actual form submission
+      document.getElementById("thankYouMsg").style.display = "block"; // show thank you message
+      this.reset(); // clear the form
+    });
+  </script>
+</body>
+</html>
